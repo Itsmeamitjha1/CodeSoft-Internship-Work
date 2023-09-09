@@ -3,7 +3,7 @@ body{
     padding: 0;
     min-width: 1200px;
     min-height: 840px
-    position: relative;
+    position: absolute;
     background-color: white;
 }
 
