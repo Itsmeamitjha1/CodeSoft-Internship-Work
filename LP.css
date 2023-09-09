@@ -1,0 +1,212 @@
+body{
+    margin: 0;
+    padding: 0;
+    min-width: 1200px;
+    position: relative;
+    background-color: white;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+    border: border-box;
+    justify-content: center;
+    position: relative;
+}
+/**First part**/
+.f{
+    background: radial-gradient(circle, #0f9fff, #729bc4);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/** BOX 1 **/
+.nav1{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/** Hover**/
+.border{
+    border: 1.5px solid transparent;
+}
+
+.border:hover{
+    border: 1.5px solid white;
+}
+
+/** BOX 2 **/
+.nav2{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: pink;
+    width: 620px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+/**Search hover**/
+.nav2:hover{
+    border: 2px solid red;
+}
+
+.search-select{
+    background-color: #f3f3f3;
+    width: 50px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: none;
+}
+
+.search-input{
+    width: 100%;
+    font-size: 1rem;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border: none;
+}
+/** BOX 3 **/
+.nav3{
+    color: white;
+}
+/** BOX 4 **/
+.nav4{
+    color: white;
+}
+/** BOX 5 **/
+.nav5{
+    color: white;
+}
+
+/**Second part**/
+
+.s{
+    margin: 10px;
+    padding: 10px;
+    height: 365px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.text{
+    color: rgb(34, 175, 223);
+    font-size: 3rem;
+}
+
+.bar{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    font-size: 2rem;
+    margin: 20px;
+    padding: 10px;
+}
+
+.about{
+    background: radial-gradient(circle, #0f9fff, #729bc4);
+    border-radius: 5px;
+    width: 180px;
+}
+
+.why{
+    background: radial-gradient(circle, #0f9fff, #729bc4);
+    border-radius: 5px;
+    width: 205px;
+
+}
+
+.br:hover{
+    border: 1.5px solid rgb(246, 175, 9);
+}
+
+
+/**Third Part**/
+
+.t{
+    background: radial-gradient(circle, #729bc4,#0f9fff);
+    height: 350px;
+    width: 100%;
+}
+
+.plan{
+    color: white;
+    font-size: 3rem;
+    display: flex;
+}
+
+/**Plan 1**/
+.plan1{
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+/**Plan 2**/
+.plan2{
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+/**Plan 3**/
+.plan3{
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+p{
+    padding: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#month:hover{
+    background-color: #0f9fff;
+    color: white;
+    border-radius: 10px;
+}
+
+#month{
+    background-color: white;
+    color: #0f9fff;
+    border-radius: 10px;
+    width: 50%;
+    display: flex;
+}
+
+#st{
+    padding-bottom: 10px;
+}
+
+
+.pn{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+}
+
+/** Fourth Part**/
+
+.f{
+    background: radial-gradient(circle, rgb(238, 233, 233), rgb(10, 146, 224));
+    height: 50px;
+    width: 100%;
+}
+
+footer{
+    color: rgb(7, 127, 225);
+    font-size: 1.5rem;
+}
