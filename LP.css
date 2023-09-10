@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     min-width: 1200px;
+    position: relative;
     background-color: white;
 }
 
@@ -120,8 +121,18 @@ body{
 
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#O:hover{
+    opacity: 0.5;
+}
+
 .br:hover{
     border: 1.5px solid rgb(246, 175, 9);
+    opacity: 0.5;
 }
 
 
@@ -197,7 +208,57 @@ p{
     margin: 20px;
 }
 
-/** Fourth Part**/
+.fo{
+    background-color: white;
+    height: 400px;
+    width: 100%;
+    padding: 10px;
+
+}
+
+.feed{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+.feedback{
+    display: flex;
+    font-size: 3rem;
+    color: #0f9fff;
+}
+
+.f1{
+    padding: 10px;
+    font-size: 1.8rem;
+    background: radial-gradient(circle, #729bc4,#0f9fff);
+    width: 320px;
+    border-radius: 15px;
+    color: white;
+}
+
+.fa{
+    font-size: 20px;
+}
+
+.f11{
+    font-size: 1.4rem;
+}
+#pe{
+    float: left;
+    padding: 5px;
+    opacity: 1;
+}
+
+#pe:hover{
+    opacity: 0.5;
+}
+
+.checked {
+    color: orange;
+}
+
+/** Fifth Part**/
 
 .f{
     background: radial-gradient(circle, rgb(238, 233, 233), rgb(10, 146, 224));
