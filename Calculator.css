@@ -1,0 +1,146 @@
+/* Define global styles for the entire document */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  /* Define custom CSS variables for consistent colors */
+  :root {
+    --background-color: linear-gradient(30deg, rgb(0, 253, 59), rgb(59, 128, 31));
+    --calculator-color: linear-gradient(30deg, rgb(0, 247, 255), rgb(6, 246, 134)); 
+    --keys-bg: linear-gradient(50deg, rgb(70, 233, 211), rgb(80, 183, 179));
+    --key: white;
+    --key-bg: rgb(16, 140, 154);
+    --operator: rgb(247, 243, 0);
+    --shadow: rgb(94, 255, 0);
+    --action: rgb(102, 246, 102);
+  }
+  
+  /* Style the main application container */
+  .app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--background-color);
+  }
+  
+  /* Style the calculator container */
+  .calculator {
+    background: var(--calculator-color);
+    width: 100%;
+    max-width: 375px;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  
+  /* Style the calculator display area */
+  .display {
+    min-height: 200px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: var(--key);
+    text-align: right;
+    flex: 1 1 0%;
+  }
+  
+  /* Style the input text in the display area */
+  .display .input {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Style the output text in the display area */
+  .display .output {
+    font-size: 3rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Style operators in the display area */
+  .display .operator {
+    color: var(--operator);
+  }
+  
+  /* Style brackets and percent signs in the display area */
+  .display .brackets,
+  .display .percent {
+    color: var(--operator);
+  }
+  
+  /* Style the keys container */
+  .keys {
+    background: var(--keys-bg);
+    padding: 1.5rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 1rem;
+    box-shadow: 0px -2px 16px var(--shadow);
+  }
+  
+  /* Style individual keys */
+  .keys .key {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    height: 0;
+    padding-top: 100%;
+    background: var(--key-bg);
+    border-radius: 1rem;
+    transition: .3s;
+    user-select: none;
+  }
+  
+  /* Style text within keys */
+  .keys .key span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--key);
+  }
+  
+  /* Highlight keys on hover */
+  .keys .key:hover {
+    box-shadow: inset 0px 0px 8px var(--shadow);
+  }
+  
+  /* Style operator keys */
+  .keys .key.operator span {
+    color: var(--operator);
+  }
+  
+  /* Style action keys */
+  .keys .key.action span {
+    color: var(--action);
+  }
+  
+  /* Styling for the footer */
+  footer {
+    background: var(--background-color); /* Background color for the footer */
+    color: #fff; /* Text color for the footer */
+    text-align: center; /* Center-align the text */
+    padding: 5px; /* Add padding for spacing */
+    position: absolute; /* Position at the bottom of the viewport */
+    bottom: 0;
+    width: 100%; /* Full width */
+  }
+  
+  /* Style text within the footer */
+  footer p {
+    font-size: 1rem; /* Font size for the footer text */
+  }
+  
