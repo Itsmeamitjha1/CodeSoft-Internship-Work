@@ -7,389 +7,488 @@
 </head>
 
 <style>
-   /* Reset default margin, padding, and box-sizing behavior */
-   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-   } 
+  /* Define global styles for the entire document */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
-   /* Define custom CSS variables */
-   :root {
-    --background-color: linear-gradient(30deg, rgb(0, 253, 59), rgb(59, 128, 31));
-    --calculator-color: linear-gradient(30deg, rgb(0, 247, 255), rgb(6, 246, 134)); 
-    --keys-bg: linear-gradient(50deg, rgb(70, 233, 211), rgb(80, 183, 179));
-    --key: white;
-    --key-bg: rgb(16, 140, 154);
-    --operator: rgb(247, 243, 0);
-    --shadow: rgb(94, 255, 0);
-    --action: rgb(102, 246, 102);
-   }
+/* Define custom CSS variables for consistent colors */
+:root {
+  --background-color: linear-gradient(30deg, rgb(0, 253, 59), rgb(59, 128, 31));
+  --calculator-color: linear-gradient(30deg, rgb(0, 247, 255), rgb(6, 246, 134)); 
+  --keys-bg: linear-gradient(50deg, rgb(70, 233, 211), rgb(80, 183, 179));
+  --key: white;
+  --key-bg: rgb(16, 140, 154);
+  --operator: rgb(247, 243, 0);
+  --shadow: rgb(94, 255, 0);
+  --action: rgb(102, 246, 102);
+}
 
-   /* Styles for the calculator app container */
-   .app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: var(--background-color);
-   }
+/* Style the main application container */
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--background-color);
+}
 
-   /* Styles for the calculator itself */
-   .calculator {
-    background: var(--calculator-color);
-    width: 100%;
-    max-width: 375px;
-    min-height: 640px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.5rem;
-    overflow: hidden;
-   }
+/* Style the calculator container */
+.calculator {
+  background: var(--calculator-color);
+  width: 100%;
+  max-width: 375px;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
 
-   /* Styles for the display area */
-   .display {
-    min-height: 200px;
-    padding: 1.5rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    color: var(--key);
-    text-align: right;
-    flex: 1 1 0%;
-   }
+/* Style the calculator display area */
+.display {
+  min-height: 200px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: var(--key);
+  text-align: right;
+  flex: 1 1 0%;
+}
 
-   /* Styles for input text in the display */
-   .display .input {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-   }
+/* Style the input text in the display area */
+.display .input {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
 
-   /* Styles for output text in the display */
-   .display .output {
-    font-size: 3rem;
-    font-weight: 700;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-   }
+/* Style the output text in the display area */
+.display .output {
+  font-size: 3rem;
+  font-weight: 700;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
 
-   /* Styles for operator text in the display */
-   .display .operator {
-        color: var(--operator);
-   }
+/* Style operators in the display area */
+.display .operator {
+  color: var(--operator);
+}
 
-   /* Styles for brackets and percent text in the display */
-   .display .brackets,
-   .display .percent {
-        color: var(--operator);
-   }
+/* Style brackets and percent signs in the display area */
+.display .brackets,
+.display .percent {
+  color: var(--operator);
+}
 
-   /* Styles for the keys section */
-   .keys {
-       background: var(--keys-bg);
-       padding: 1.5rem;
-       border-radius: 1.5rem 1.5rem 0 0;
-       display: grid;
-       grid-template-columns: repeat(4, 1fr);
-       grid-template-rows: repeat(5, 1fr);
-       grid-gap: 1rem;
-       box-shadow: 0px -2px 16px var(--shadow);
-   }
+/* Style the keys container */
+.keys {
+  background: var(--keys-bg);
+  padding: 1.5rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 1rem;
+  box-shadow: 0px -2px 16px var(--shadow);
+}
 
-   /* Styles for individual keys */
-   .keys .key {
-        position: relative;
-        cursor: pointer;
-        display: block;
-        height: 0;
-        padding-top: 100%;
-        background: var(--key-bg);
-        border-radius: 1rem;
-        transition: .3s;
-        user-select: none;
-   }
+/* Style individual keys */
+.keys .key {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height: 0;
+  padding-top: 100%;
+  background: var(--key-bg);
+  border-radius: 1rem;
+  transition: .3s;
+  user-select: none;
+}
 
-   /* Styles for text within keys */
-   .keys .key span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--key);
-   }
+/* Style text within keys */
+.keys .key span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--key);
+}
 
-   /* Hover effect for keys */
-   .keys .key:hover {
-        box-shadow: inset 0px 0px 8px var(--shadow);
-   }
+/* Highlight keys on hover */
+.keys .key:hover {
+  box-shadow: inset 0px 0px 8px var(--shadow);
+}
 
-   /* Styles for operator keys */
-   .keys .key.operator span {
-        color: var(--operator);
-   }
+/* Style operator keys */
+.keys .key.operator span {
+  color: var(--operator);
+}
 
-   /* Styles for action keys */
-   .keys .key.action span {
-        color: var(--action);
-   }
+/* Style action keys */
+.keys .key.action span {
+  color: var(--action);
+}
 
+/* Styling for the footer */
+footer {
+  background: var(--background-color); /* Background color for the footer */
+  color: #fff; /* Text color for the footer */
+  text-align: center; /* Center-align the text */
+  padding: 5px; /* Add padding for spacing */
+  position: absolute; /* Position at the bottom of the viewport */
+  bottom: 0;
+  width: 100%; /* Full width */
+}
 
+/* Style text within the footer */
+footer p {
+  font-size: 1rem; /* Font size for the footer text */
+}
 
 </style>
 <body>
-    <!-- Calculator App Container -->
-    <div class="app">
-        <!-- Calculator Container -->
-        <div class="calculator">
-            <!-- Display Area -->
-            <div class="display">
-                <div class="content">
-                    <!-- Input Text in the Display -->
-                    <div class="input"></div>
-                    <!-- Output Text in the Display -->
-                    <div class="output"></div>
-                </div>
-            </div>
+    
+<!-- Calculator layout structure -->
+<div class="app">
 
-            <!-- Key Buttons -->
-            <div class="keys">
-                <!-- Clear Key -->
-                <div data-key="clear" class="key action">
-                    <span>AC</span>
-                </div>
-
-                <!-- Brackets Key -->
-                <div data-key="brackets" class="key action">
-                    <span>( )</span>
-                </div>
-
-                <!-- Percent Key -->
-                <div data-key="%" class="key action">
-                    <span>%</span>
-                </div>
-
-                <!-- Division Key -->
-                <div data-key="/" class="key operator">
-                    <span>÷</span>
-                </div>
-
-                <!-- Number Keys 7, 8, 9 -->
-                <div data-key="7" class="key">
-                    <span>7</span>
-                </div>
-                <div data-key="8" class="key">
-                    <span>8</span>
-                </div>
-                <div data-key="9" class="key">
-                    <span>9</span>
-                </div>
-
-                <!-- Multiplication Key -->
-                <div data-key="*" class="key operator">
-                    <span>x</span>
-                </div>
-
-                <!-- Number Keys 4, 5, 6 -->
-                <div data-key="4" class="key">
-                    <span>4</span>
-                </div>
-                <div data-key="5" class="key">
-                    <span>5</span>
-                </div>
-                <div data-key="6" class="key">
-                    <span>6</span>
-                </div>
-
-                <!-- Subtraction Key -->
-                <div data-key="-" class="key operator">
-                    <span>-</span>
-                </div>
-
-                <!-- Number Keys 1, 2, 3 -->
-                <div data-key="1" class="key">
-                    <span>1</span>
-                </div>
-                <div data-key="2" class="key">
-                    <span>2</span>
-                </div>
-                <div data-key="3" class="key">
-                    <span>3</span>
-                </div>
-
-                <!-- Addition Key -->
-                <div data-key="+" class="key operator">
-                    <span>+</span>
-                </div>
-
-                <!-- Backspace Key -->
-                <div data-key="backspace" class="key action">
-                    <span>&lt;</span>
-                </div>
-
-                <!-- Number Key 0 -->
-                <div data-key="0" class="key">
-                    <span>0</span>
-                </div>
-
-                <!-- Decimal Point Key -->
-                <div data-key="." class="key">
-                    <span>.</span>
-                </div>
-
-                <!-- Equals Key -->
-                <div data-key="=" class="key operator">
-                    <span>=</span>
-                </div>
+    <!-- Calculator container -->
+    <div class="calculator">
+        <!-- Display area -->
+        <div class="display">
+            <div class="content">
+                <!-- Input and output sections -->
+                <div class="input"></div>
+                <div class="output"></div>
             </div>
         </div>
+
+        <!-- Calculator keys -->
+        <div class="keys">
+
+            <!-- Clear, brackets, and percentage keys -->
+            <div data-key="clear" class="key action">
+                <span>AC</span>
+            </div>
+            <div data-key="brackets" class="key action">
+                <span>( )</span>
+            </div>
+            <div data-key="%" class="key action">
+                <span>%</span>
+            </div>
+
+            <!-- Operator keys (division, multiplication, subtraction, addition) -->
+            <div data-key="/" class="key operator">
+                <span>÷</span>
+            </div>
+            <div data-key="7" class="key">
+                <span>7</span>
+            </div>
+            <div data-key="8" class="key">
+                <span>8</span>
+            </div>
+            <div data-key="9" class="key">
+                <span>9</span>
+            </div>
+            <div data-key="*" class="key operator">
+                <span>x</span>
+            </div>
+            <div data-key="4" class="key">
+                <span>4</span>
+            </div>
+            <div data-key="5" class="key">
+                <span>5</span>
+            </div>
+            <div data-key="6" class="key">
+                <span>6</span>
+            </div>
+            <div data-key="-" class="key operator">
+                <span>-</span>
+            </div>
+            <div data-key="1" class="key">
+                <span>1</span>
+            </div>
+            <div data-key="2" class="key">
+                <span>2</span>
+            </div>
+            <div data-key="3" class="key">
+                <span>3</span>
+            </div>
+            <div data-key="+" class="key operator">
+                <span>+</span>
+            </div>
+
+            <!-- Backspace, zero, period, and equals keys -->
+            <div data-key="backspace" class="key action">
+                <span>&lt;</span>
+            </div>
+            <div data-key="0" class="key">
+                <span>0</span>
+            </div>
+            <div data-key="." class="key">
+                <span>.</span>
+            </div>
+            <div data-key="=" class="key operator">
+                <span>=</span>
+            </div>
+
+        </div>
     </div>
-    
+</div>
+
+<!-- Footer with author and copyright information -->
+<footer>
+    <p>This Calculator build by Amit Kumar Jha &copy; AJ 2023</p>
+</footer>
 
     <script>
-        // Get all elements with the class 'key'
-const keys = document.querySelectorAll('.key');
+        // Get all calculator keys and display elements
+        const keys = document.querySelectorAll('.key');
+       const display_input = document.querySelector('.display .input');
+       const display_output = document.querySelector('.display .output');
 
-// Get the input and output display elements
-const display_input = document.querySelector('.display .input');
-const display_output = document.querySelector('.display .output');
+       // Initialize the input string
+       let input = "";
+   
+       // Iterate through each calculator key
+       for (let key of keys){
+          // Get the value of the key from the 'data-key' attribute
+           const value = key.dataset.key;
+   
+           // Add a click event listener for each key
+           key.addEventListener('click', () => {
+               // Check which key was clicked and perform the corresponding action
+               if(value == "clear"){
+                 // Clear the input and display
+                   input = "";
+                   display_input.innerHTML = "";
+                   display_output.innerHTML = "";
+               } else if(value == "backspace"){
+                  // Handle backspace by removing the last character from the input
+                   input = input.slice(0, -1);
+                   display_input.innerHTML = CleanInput(input);
+               } else if(value == "="){
+                  // Evaluate the input expression and display the result
+                   let result = eval(PrepareInput(input));
+   
+                   display_output.innerHTML = CleanOutput(result);
+               } else if(value == "brackets"){
+                 // Handle brackets to add or remove parentheses
+                   if(
+                       input.indexOf("(") == -1 || 
+                       input.indexOf("(") != -1 && 
+                       input.indexOf(")") != -1 && 
+                       input.lastIndexOf("(") < input.lastIndexOf(")")
+                   ) {
+                       input += "(";
+                   } else if (
+                       input.indexOf("(") != -1 && 
+                       input.indexOf(")") == -1 ||
+                       input.indexOf("(") != -1 &&
+                       input.indexOf(")") != -1 &&
+                       input.lastIndexOf("(") > input.lastIndexOf(")")
+                   ) {
+                       input += ")";
+                   }
+   
+                   display_input.innerHTML = CleanInput(input);
+               }   else{
+                    // Validate and append the value to the input
+                   if (ValidateInput(value)){
+                     input += value;
+                   display_input.innerHTML = CleanInput(input);
+                   }
+               }
+           })
+       }
 
-// Initialize an empty input string
-let input = "";
+       // Function to clean and format the input
+       function CleanInput(input){
+         //  (Code to format and clean the input)
+          let input_array = input.split('');
+         let input_array_length = input_array.length;
 
-// Iterate through each key element
-for (let key of keys) {
-    // Get the data-key attribute value of the current key
-    const value = key.dataset.key;
-
-    // Add a click event listener to the key
-    key.addEventListener('click', () => {
-        if (value == "clear") {
-            // Clear the input and display areas
-            input = "";
-            display_input.innerHTML = "";
-            display_output.innerHTML = "";
-        } else if (value == "backspace") {
-            // Remove the last character from the input
-            input = input.slice(0, -1);
-            display_input.innerHTML = CleanInput(input);
-        } else if (value == "=") {
-            // Evaluate the input expression and display the result
-            let result = eval(PrepareInput(input));
-            display_output.innerHTML = CleanOutput(result);
-        } else if (value == "brackets") {
-            // Add parentheses to the input based on certain conditions
-            if (
-                input.indexOf("(") == -1 || 
-                input.indexOf("(") != -1 && 
-                input.indexOf(")") != -1 && 
-                input.lastIndexOf("(") < input.lastIndexOf(")")
-            ) {
-                input += "(";
-            } else if (
-                input.indexOf("(") != -1 && 
-                input.indexOf(")") == -1 ||
-                input.indexOf("(") != -1 &&
-                input.indexOf(")") != -1 &&
-                input.lastIndexOf("(") > input.lastIndexOf(")")
-            ) {
-                input += ")";
+         for (let i = 0; i < input_array_length; i++){
+             if(input_array[i] == "*"){
+                  input_array[i] = ' <span class="operator">x</span> ';
+                } 
+                else if (input_array[i] == "/"){
+                  input_array[i] = ' <span class="operator">÷</span> ';
+                } 
+                else if (input_array[i] == "+"){
+                  input_array[i] = ' <span class="operator">+</span> ';
+                } 
+                else if (input_array[i] == "-"){
+                  input_array[i] = ' <span class="operator">-</span> ';
+                } 
+                else if (input_array[i] == "("){
+                  input_array[i] = '<span class="brackets">(</span>';
+                } 
+                else if (input_array[i] == ")"){
+                  input_array[i] = '<span class="brackets">)</span>';
+                } 
+                else if (input_array[i] == "%"){
+                  input_array[i] = '<span class="percent">%</span>';
+                }
             }
-            display_input.innerHTML = CleanInput(input);
-        } else {
-            // Validate and append the value to the input
-            if (ValidateInput(value)) {
-                input += value;
-                display_input.innerHTML = CleanInput(input);
+
+         return input_array.join("");
+        }
+
+
+        // Function to clean and format the output
+        function CleanOutput (output){
+            // (Code to format and clean the output)
+            let output_string = output.toString();
+            let decimal = output_string.split(".")[1];
+            output_string = output_string.split(".")[0];
+
+            let output_array = output_string.split("");
+
+            if (output_array.length > 3){
+                for (let i = output_array.length - 3; i > 0; i -= 3){
+                    output_array.splice(i, 0, ",");
+                }
             }
+
+            if (decimal){
+                output_array.push(".");
+                output_array.push(decimal);
+            }
+
+            return output_array.join("");
         }
-    });
-}
 
-// Function to clean the input by adding HTML spans for operators and symbols
-function CleanInput(input) {
-    let input_array = input.split('');
-    let input_array_length = input_array.length;
+        // Function to validate input
+        function ValidateInput(value){
+            // ... (Code to validate the input)
+            let last_input = input.slice(-1);
+            let operators = ["+", "-", "*", "/"];
 
-    for (let i = 0; i < input_array_length; i++) {
-        if (input_array[i] == "*") {
-            input_array[i] = ' <span class="operator">x</span> ';
-        } else if (input_array[i] == "/") {
-            input_array[i] = ' <span class="operator">÷</span> ';
-        } else if (input_array[i] == "+") {
-            input_array[i] = ' <span class="operator">+</span> ';
-        } else if (input_array[i] == "-") {
-            input_array[i] = ' <span class="operator">-</span> ';
-        } else if (input_array[i] == "(") {
-            input_array[i] = '<span class="brackets">(</span>';
-        } else if (input_array[i] == ")") {
-            input_array[i] = '<span class="brackets">)</span>';
-        } else if (input_array[i] == "%") {
-            input_array[i] = '<span class="percent">%</span>';
-        }
-    }
+            if (value == "." && last_input == "."){
+                return false;
+            }
 
-    return input_array.join("");
-}
+            if (operators.includes(value)){
+                if(operators.includes(last_input)){
+                    return false;
+                } else {
+                    return true;
+                }
+            }
 
-// Function to format the output by adding commas for thousands
-function CleanOutput(output) {
-    let output_string = output.toString();
-    let decimal = output_string.split(".")[1];
-    output_string = output_string.split(".")[0];
-
-    let output_array = output_string.split("");
-
-    if (output_array.length > 3) {
-        for (let i = output_array.length - 3; i > 0; i -= 3) {
-            output_array.splice(i, 0, ",");
-        }
-    }
-
-    if (decimal) {
-        output_array.push(".");
-        output_array.push(decimal);
-    }
-
-    return output_array.join("");
-}
-
-// Function to validate the input value
-function ValidateInput(value) {
-    let last_input = input.slice(-1);
-    let operators = ["+", "-", "*", "/"];
-
-    if (value == "." && last_input == ".") {
-        return false;
-    }
-
-    if (operators.includes(value)) {
-        if (operators.includes(last_input)) {
-            return false;
-        } else {
             return true;
         }
-    }
 
-    return true;
-}
+        // Function to prepare input for evaluation
+        function PrepareInput(input){
+            // ... (Code to prepare the input for evaluation)
+            let input_array = input.split("");
 
-// Function to prepare the input by replacing '%' with '/100'
-function PrepareInput(input) {
-    let input_array = input.split("");
+            for (let i = 0; i < input_array.length; i++){
+                if(input_array[i] == "%"){
+                    input_array[i] == "/100";
+                }
+            }
 
-    for (let i = 0; i < input_array.length; i++) {
-        if (input_array[i] == "%") {
-            input_array[i] == "/100";
+            return input_array.join("")
         }
+
+        // Add an event listener for keyboard input
+        document.addEventListener('keydown', handleKeyboardInput);
+
+        // Function to handle keyboard input
+     function handleKeyboardInput(event) {
+         // Get the pressed key from the event
+         const key = event.key;
+
+         // Initialize a variable to store the corresponding calculator value
+         let value = '';
+
+         // Map keyboard keys to calculator values
+         switch (key) {
+             case 'Enter':
+                 // When Enter key is pressed, it's mapped to the '=' key in the calculator
+                 value = '=';
+              break;
+
+              case 'Backspace':
+                 // Backspace key is mapped to the 'backspace' key in the calculator
+                 value = 'backspace';
+              break;
+
+             case 'Escape':
+                  // Escape key is mapped to the 'clear' key in the calculator
+                  value = 'clear';
+               break;
+              case '+':
+                  // The plus key on the keyboard is mapped to the '+' key in the calculator
+                 value = '+';
+               break;
+
+              case '-':
+                 // The minus key on the keyboard is mapped to the '-' key in the calculator
+                  value = '-';
+              break;
+
+              case '*':
+                  // The asterisk key (*) on the keyboard is mapped to the '*' key in the calculator
+                 value = '*';
+              break;
+
+              case '/':
+                 // The forward slash key (/) on the keyboard is mapped to the '/' key in the calculator
+                  value = '/';
+               break;
+
+              case '.':
+                   // The period key (.) on the keyboard is mapped to the '.' key in the calculator
+                 value = '.';
+                break;
+
+               case '0': // Numeric keys 0-9
+               case '1':
+               case '2':
+               case '3':
+               case '4':
+               case '5':
+               case '6':
+               case '7':
+               case '8':
+                case '9':
+                   value = key; // Map numeric keys directly
+               break;
+
+             case '(': // Open bracket
+                  // Map '(' key to 'brackets' to match your calculator's button data-key
+                 value = 'brackets';
+             break;
+
+             case ')': // Close bracket
+                  // Map ')' key to 'brackets' to match your calculator's button data-key
+                  value = 'brackets';
+              break;
+
+          default:
+             // Handle unknown keys (you can add more cases if needed)
+            break;
     }
 
-    return input_array.join("");
-}
+    // Find the corresponding key element in the calculator's HTML using the 'data-key' attribute
+    const keyElement = document.querySelector(`[data-key="${value}"]`);
 
+    // If a corresponding key element is found, simulate a click event on it
+    if (keyElement) {
+        keyElement.click();
+    }
+}
 
     </script>
 </body>
